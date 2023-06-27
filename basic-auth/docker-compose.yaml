@@ -40,7 +40,7 @@ services:
   workspace:
     image: alnoda/alnoda-workspace:latest
     environment:
-      - WRK_HOST=0.0.0.0
+      - WRK_HOST=${WRK_HOST}
     labels:
       # You can create new login in any workspace if you install htpasswd:
       #   sudo apt-get install apache2-utils -y
