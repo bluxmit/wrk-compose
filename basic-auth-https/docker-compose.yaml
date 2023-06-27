@@ -39,7 +39,11 @@ services:
 
   workspace:
     image: alnoda/alnoda-workspace:latest
-    restart: always
+    restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 3
+        window: 120s
     environment:
       - WRK_HOST=${WRK_HOST}
     labels:
