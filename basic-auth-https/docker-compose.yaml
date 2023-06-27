@@ -1,4 +1,3 @@
-
 version: "3.3"
 
 services:
@@ -46,7 +45,7 @@ services:
     labels:
       - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
       - "traefik.enable=true"
-      - "traefik.http.middlewares.httprepl.redirectregex.regex=^http://(.*)",
+      - "traefik.http.middlewares.httprepl.redirectregex.regex=^http://(.*)"
       - "traefik.http.middlewares.httprepl.redirectregex.replacement=https://$${1}"
       
       # 8020
