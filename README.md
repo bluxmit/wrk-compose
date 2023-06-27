@@ -1,9 +1,9 @@
 # Alnoda workspaces compose 
 
 This repo contains example of docker-compose that can be used to launch 
-self-hosted Alnoda workspaces with docker compoose. 
+self-hosted Alnoda workspaces with docker compose. 
 
-To launch Alnoda workspace on a cloud server with basic authentication: 
+To start Alnoda workspace on a cloud server with basic authentication: 
 
 - Make sure server has docker and docker compose 
 - Clone repository 
