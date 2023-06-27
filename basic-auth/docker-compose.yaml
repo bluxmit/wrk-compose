@@ -1,0 +1,179 @@
+
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      - "--api"
+      - "--api.dashboard"
+      - "--api.insecure"
+      - "--providers.docker"
+      - "--entrypoints.por8020.address=:8020"
+      - "--entrypoints.por8021.address=:8021"
+      - "--entrypoints.por8022.address=:8022"
+      - "--entrypoints.por8023.address=:8023"
+      - "--entrypoints.por8024.address=:8024"
+      - "--entrypoints.por8024.address=:8025"
+      - "--entrypoints.por8020.address=:8026"
+      - "--entrypoints.por8021.address=:8027"
+      - "--entrypoints.por8022.address=:8028"
+      - "--entrypoints.por8023.address=:8029"
+      - "--entrypoints.por8024.address=:8030"
+      - "--entrypoints.por8024.address=:8031"
+      - "--entrypoints.por8020.address=:8032"
+      - "--entrypoints.por8021.address=:8033"
+      - "--entrypoints.por8022.address=:8034"
+      - "--entrypoints.por8023.address=:8035"
+      - "--entrypoints.por8024.address=:8036"
+      - "--entrypoints.por8024.address=:8037"
+      - "--entrypoints.por8023.address=:8038"
+      - "--entrypoints.por8024.address=:8039"
+      - "--entrypoints.por8024.address=:8040"
+    ports:
+      - "8020-8040:8020-8040"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      
+  workspace:
+    image: alnoda/alnoda-workspace:latest
+    environment:
+      - WRK_HOST=0.0.0.0
+    labels:
+      # You can create new login in any workspace if you install htpasswd:
+      #   sudo apt-get install apache2-utils -y
+      # To create new user:password pair, it's possible to use this command:
+      #   echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
+      # (substitute <userName> with the user name of your choice)
+      # and enter password (twice). The default the user:pass is admin:admin
+      # You can have multiple <user:pass> separated with "," 
+      - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
+      - "traefik.enable=true"
+      # 8020
+      - "traefik.http.services.por8020.loadbalancer.server.port=8020"
+      - "traefik.http.routers.por8020.service=por8020"
+      - "traefik.http.routers.por8020.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8020.entrypoints=por8020"
+      - "traefik.http.routers.por8020.middlewares=basic-auth"
+      # 8021 
+      - "traefik.http.services.por8021.loadbalancer.server.port=8021"
+      - "traefik.http.routers.por8021.service=por8021"
+      - "traefik.http.routers.por8021.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8021.entrypoints=por8021"
+      - "traefik.http.routers.por8021.middlewares=basic-auth"
+      # 8022 
+      - "traefik.http.services.por8022.loadbalancer.server.port=8022"
+      - "traefik.http.routers.por8022.service=por8022"
+      - "traefik.http.routers.por8022.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8022.entrypoints=por8022"
+      - "traefik.http.routers.por8022.middlewares=basic-auth"
+      # 8023 
+      - "traefik.http.services.por8023.loadbalancer.server.port=8023"
+      - "traefik.http.routers.por8023.service=por8023"
+      - "traefik.http.routers.por8023.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8023.entrypoints=por8023"
+      - "traefik.http.routers.por8023.middlewares=basic-auth"
+      # 8024
+      - "traefik.http.services.por8024.loadbalancer.server.port=8024"
+      - "traefik.http.routers.por8024.service=por8024"
+      - "traefik.http.routers.por8024.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8024.entrypoints=por8024"
+      - "traefik.http.routers.por8024.middlewares=basic-auth"
+      # 8025
+      - "traefik.http.services.por8025.loadbalancer.server.port=8025"
+      - "traefik.http.routers.por8025.service=por8025"
+      - "traefik.http.routers.por8025.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8025.entrypoints=por8025"
+      - "traefik.http.routers.por8025.middlewares=basic-auth"
+      # 8026
+      - "traefik.http.services.por8026.loadbalancer.server.port=8026"
+      - "traefik.http.routers.por8026.service=por8026"
+      - "traefik.http.routers.por8026.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8026.entrypoints=por8026"
+      - "traefik.http.routers.por8026.middlewares=basic-auth"
+      # 8027
+      - "traefik.http.services.por8027.loadbalancer.server.port=8027"
+      - "traefik.http.routers.por8027.service=por8027"
+      - "traefik.http.routers.por8027.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8027.entrypoints=por8027"
+      - "traefik.http.routers.por8027.middlewares=basic-auth"
+      # 8028
+      - "traefik.http.services.por8028.loadbalancer.server.port=8028"
+      - "traefik.http.routers.por8028.service=por8028"
+      - "traefik.http.routers.por8028.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8028.entrypoints=por8028"
+      - "traefik.http.routers.por8028.middlewares=basic-auth"
+      # 8029
+      - "traefik.http.services.por8029.loadbalancer.server.port=8029"
+      - "traefik.http.routers.por8029.service=por8029"
+      - "traefik.http.routers.por8029.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8029.entrypoints=por8029"
+      - "traefik.http.routers.por8029.middlewares=basic-auth"
+      # 8030
+      - "traefik.http.services.por8030.loadbalancer.server.port=8030"
+      - "traefik.http.routers.por8030.service=por8030"
+      - "traefik.http.routers.por8030.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8030.entrypoints=por8030"
+      - "traefik.http.routers.por8030.middlewares=basic-auth"
+      # 8031
+      - "traefik.http.services.por8031.loadbalancer.server.port=8031"
+      - "traefik.http.routers.por8031.service=por8031"
+      - "traefik.http.routers.por8031.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8031.entrypoints=por8031"
+      - "traefik.http.routers.por8031.middlewares=basic-auth"
+      # 8032
+      - "traefik.http.services.por8032.loadbalancer.server.port=8032"
+      - "traefik.http.routers.por8032.service=por8032"
+      - "traefik.http.routers.por8032.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8032.entrypoints=por8032"
+      - "traefik.http.routers.por8032.middlewares=basic-auth"
+      # 8033
+      - "traefik.http.services.por8033.loadbalancer.server.port=8033"
+      - "traefik.http.routers.por8033.service=por8033"
+      - "traefik.http.routers.por8033.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8033.entrypoints=por8033"
+      - "traefik.http.routers.por8033.middlewares=basic-auth"
+      # 8034
+      - "traefik.http.services.por8034.loadbalancer.server.port=8034"
+      - "traefik.http.routers.por8034.service=por8034"
+      - "traefik.http.routers.por8034.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8034.entrypoints=por8034"
+      - "traefik.http.routers.por8034.middlewares=basic-auth"
+      # 8035
+      - "traefik.http.services.por8035.loadbalancer.server.port=8035"
+      - "traefik.http.routers.por8035.service=por8035"
+      - "traefik.http.routers.por8035.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8035.entrypoints=por8035"
+      - "traefik.http.routers.por8035.middlewares=basic-auth"
+      # 8036
+      - "traefik.http.services.por8036.loadbalancer.server.port=8036"
+      - "traefik.http.routers.por8036.service=por8036"
+      - "traefik.http.routers.por8036.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8036.entrypoints=por8036"
+      - "traefik.http.routers.por8036.middlewares=basic-auth"
+      # 8037
+      - "traefik.http.services.por8037.loadbalancer.server.port=8037"
+      - "traefik.http.routers.por8037.service=por8037"
+      - "traefik.http.routers.por8037.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8037.entrypoints=por8037"
+      - "traefik.http.routers.por8037.middlewares=basic-auth"
+      # 8038
+      - "traefik.http.services.por8038.loadbalancer.server.port=8038"
+      - "traefik.http.routers.por8038.service=por8038"
+      - "traefik.http.routers.por8038.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8038.entrypoints=por8038"
+      - "traefik.http.routers.por8038.middlewares=basic-auth"
+      # 8039
+      - "traefik.http.services.por8039.loadbalancer.server.port=8039"
+      - "traefik.http.routers.por8039.service=por8039"
+      - "traefik.http.routers.por8039.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8039.entrypoints=por8039"
+      - "traefik.http.routers.por8039.middlewares=basic-auth"
+      # 8040
+      - "traefik.http.services.por8040.loadbalancer.server.port=8040"
+      - "traefik.http.routers.por8040.service=por8040"
+      - "traefik.http.routers.por8040.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.por8040.entrypoints=por8040"
+      - "traefik.http.routers.por8040.middlewares=basic-auth"
