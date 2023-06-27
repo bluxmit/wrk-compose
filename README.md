@@ -18,6 +18,7 @@ ufw allow 8020:8040/tcp
 
 ```
 git clone https://github.com/bluxmit/wrk-compose.git
+cd wrk-compose
 ```
 
 - Set environmental variable `WRK_HOST` - public server IP which allows access over the Internet, i.e.
