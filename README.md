@@ -3,7 +3,7 @@
 This repo contains example of docker-compose that can be used to launch 
 self-hosted Alnoda workspaces with docker compose. 
 
-## HTTP
+## HTTPS
 
 To start Alnoda workspace on a cloud server with basic authentication over https with self-signed certificate: 
 
