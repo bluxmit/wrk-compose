@@ -27,12 +27,6 @@ cd wrk-compose
 export WRK_HOST=34.194.12
 ```
 
-- set authentication as environmental variable WRK_AUTH, for example 
-
-```
-export WRK_AUTH=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K
-```
-
 - start workspace 
 
 ```
@@ -52,9 +46,9 @@ export WRK_IMAGE='alnoda/codeserver-workspace:5.0'
 ```
 
 
-## Authentication
+## Basic authentication
 
-Authentication in this example `admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K` is 
+the default authentication is 
 
 - user: admin
 - password: admin
@@ -75,13 +69,9 @@ echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
 
 where _<userName>_ - is the name of your user. 
 
-Enter password on prompt and __htpasswd__ wil produce credential, for example _someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u_ 
+Enter password on prompt and __htpasswd__ wil produce credentials, for example _someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u_ 
 
-Set your own credentials as environmental variable 
-
-```
-export WRK_AUTH=someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u
-```
+You can use to replace in the respective docker-compose yaml file the label of a traefik service `traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K`.
 
 
 ## HTTP
