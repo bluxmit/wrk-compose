@@ -43,7 +43,7 @@ services:
     environment:
       - WRK_HOST=${WRK_HOST}
     labels:
-      - "traefik.http.middlewares.basic-auth.basicauth.users=${WRK_AUTH:-admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K}"
+      - "traefik.http.middlewares.basic-auth.basicauth.users=${WRK_AUTH}"
       - "traefik.enable=true"
       - "traefik.http.middlewares.httprepl.redirectregex.regex=^http://(.*)"
       - "traefik.http.middlewares.httprepl.redirectregex.replacement=https://$${1}"

@@ -39,12 +39,12 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       
   workspace:
-    image: alnoda/alnoda-workspace:latest
+    image: ${WRK_IMAGE:-alnoda/alnoda-workspace:latest}
     restart: always
     environment:
       - WRK_HOST=${WRK_HOST}
     labels:
-      - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
+      - "traefik.http.middlewares.basic-auth.basicauth.users=${WRK_AUTH}"
       - "traefik.enable=true"
       # 8020
       - "traefik.http.services.por8020.loadbalancer.server.port=8020"
