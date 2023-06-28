@@ -38,7 +38,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   workspace:
-    image: alnoda/alnoda-workspace:latest
+    image: ${WRK_IMAGE:-alnoda/alnoda-workspace:latest}
     restart: always
     environment:
       - WRK_HOST=${WRK_HOST}

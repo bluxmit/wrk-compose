@@ -35,6 +35,15 @@ cd basic-auth-https; docker-compose up -d
 
 Now you can open browser on __https://[WRK_HOST]:8020__
 
+## Other workspaces 
+
+By default latest base Alnoda workspace will run.  
+
+You can start another worksppace with evironmental variable _WRK_IMAGE_, for example 
+
+```
+export WRK_IMAGE='alnoda/codeserver-workspace:5.0'
+```
 
 
 ## Basic authentication
