@@ -69,9 +69,13 @@ echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
 
 where _<userName>_ - is the name of your user. 
 
-Enter password o prompt. __htpasswd__ wil produce credential, for example _someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u_, 
-which you can use to replace in the string `traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K`  
-in the yaml file `basic-auth/docker-compose.yaml`
+Enter password on prompt and __htpasswd__ wil produce credential, for example _someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u_ 
+
+Set your own credentials as environmental variable 
+
+```
+export WRK_AUTH='someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u'
+```
 
 
 ## HTTP
