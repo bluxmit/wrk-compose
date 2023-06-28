@@ -30,7 +30,7 @@ export WRK_HOST=34.194.12
 - set authentication as environmental variable WRK_AUTH, for example 
 
 ```
-export WRK_AUTH='admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K'
+export WRK_AUTH=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K
 ```
 
 - start workspace 
@@ -80,7 +80,7 @@ Enter password on prompt and __htpasswd__ wil produce credential, for example _s
 Set your own credentials as environmental variable 
 
 ```
-export WRK_AUTH='someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u'
+export WRK_AUTH=someuser:$$2y$$05$$t2MSJSPp2V9HdLWYq9z.UeYFz2R3un9ZuiBitSjeiN3Osz6fGNZ7u
 ```
 
 
